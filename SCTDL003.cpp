@@ -34,8 +34,8 @@ string nextGreater(string num)
 
 		// if the binary representation
 		// contains only the set bits
-		if (i < 0)
-			num = "1" + num;
+		// if (i < 0)
+		// 	num = "1" + num;
 			
 	}
 	// final binary representation
