@@ -1,60 +1,78 @@
 /**
- * @file SCTDL010.cpp
- * @author long (longzil193@gmail.com)
- * @brief C++ file representation binary strings have number of 0s
- * equal to the number of 1s
+ * @file test.cpp
+ * @author long (you@domain.com)
+ * @brief C++ program for Binary To Gray 
+ * and Gray to Binary conversion
  * @version 0.1
- * @date 2023-02-26
+ * @date 2023-03-06
  * 
  * @copyright Copyright (c) 2023
  * 
  */
 
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-// Recursive function that prints
-// all strings of N length with equal 1's and 0's
-void binaryNum(int n, string s, int ones, int zeros)
+// Helper function to xor two characters
+char xor_c(char a, char b) { return (a == b) ? '0' : '1'; }
+
+// Helper function to flip the bit
+char flip(char c) { return (c == '0') ? '1' : '0'; }
+
+// function to convert binary string
+// to gray string
+string binarytoGray(string binary)
 {
+	string gray = "";
 
-	// String s contains the output to be printed
-	// ones stores the frequency of 1's
-	// zeros stores the frequency of 0's
-	// Base Condition: When the length of string s
-	// becomes N
-	if (s.length() == n)
-	{
-		cout << (s) << " ";
-		return;
+	// MSB of gray code is same as binary code
+	gray += binary[0];
+
+	// Compute remaining bits, next bit is computed by
+	// doing XOR of previous and current in Binary
+	for (int i = 1; i < binary.length(); i++) {
+		// Concatenate XOR of previous bit
+		// with current bit
+		gray += xor_c(binary[i - 1], binary[i]);
 	}
-    // If frequency of 0's is less than N/2 then
-	// add 0 to the string and increment zeros
-	if (zeros < n / 2)
-		binaryNum(n, s + "0", ones, zeros + 1);
 
-	// If frequency of 1's is less than N/2 then
-	// add 1 to the string and increment ones
-	if (ones < n / 2)
-		binaryNum(n, s + "1", ones + 1, zeros);
+	return gray;
+}
+
+// function to convert gray code string
+// to binary string
+string graytoBinary(string gray)
+{
+	string binary = "";
+
+	// MSB of binary code is same as gray code
+	binary += gray[0];
+
+	// Compute remaining bits
+	for (int i = 1; i < gray.length(); i++) {
+		// If current bit is 0, concatenate
+		// previous bit
+		if (gray[i] == '0')
+			binary += binary[i - 1];
+
+		// Else, concatenate invert of
+		// previous bit
+		else
+			binary += flip(binary[i - 1]);
+	}
+
+	return binary;
 }
 
 int main()
 {
-    int t;
+	int t;
     cin >> t;
-    while(t--) 
+    while(t--)
     {
-        int n;
-        cin >> n;
-        string s = "";
-        if(!(n&1))
-            binaryNum(n, s, 0, 0);
-        else 
-            cout << -1 << endl;
-
-        cout << endl;
+        string gray;
+        cin >> gray;
+        cout << graytoBinary(gray) << endl;
     }
-    return 0;
+	return 0;
 }
-

@@ -1,71 +1,61 @@
 /**
  * @file SCTDL006.cpp
  * @author long (you@domain.com)
- * @brief  C++ program to find all the number of ways, n can be 
- * written as sum of two or more positive integers.
+ * @brief C++ Program to find number of ways to 
+ * which numbers that are greater than 
+ * given number can be added to get sum.
  * @version 0.1
- * @date 2023-02-27
+ * @date 2023-03-06
  * 
  * @copyright Copyright (c) 2023
  * 
  */
 
 #include <bits/stdc++.h>
+#define MAX 100
 using namespace std;
 
-// Function to print the values stored
-// in vector arr
-void printVector(vector<int>& arr)
+// Return number of ways to which numbers
+// that are greater than given number can
+// be added to get sum.
+void numberofways(int n, int m)
 {
-	if (arr.size() != 1) {
+	int dp[n+2][n+2];
+	memset(dp, 0, sizeof(dp));
 
-		// Traverse the vector arr
-		for (int i = 0; i < arr.size(); i++) {
-			cout << arr[i] << " ";
+	dp[0][n + 1] = 1;
+
+	// Filling the table. k is for numbers
+	// greater than or equal that are allowed.
+	for (int k = n; k >= m; k--) {
+
+		// i is for sum
+		for (int i = 0; i <= n; i++) {
+
+			// initializing dp[i][k] to number
+			// ways to get sum using numbers
+			// greater than or equal k+1
+			dp[i][k] = dp[i][k + 1];
+
+			// if i > k
+			if (i - k >= 0)
+				dp[i][k] = (dp[i][k] + dp[i - k][k]);
 		}
+	}
+
+	for(int i=0 ; i < n+2; i++)
+	{
+		for(int j=0 ; j < n+2 ; j++)
+			cout << dp[i][j] << " ";
+
 		cout << endl;
 	}
 }
 
-// Recursive function to print different
-// ways in which N can be written as
-// a sum of at 2 or more positive integers
-void findWays(vector<int>& arr, int i, int n)
-{
-	// If n is zero then print this
-	// ways of breaking numbers
-	if (n == 0)
-		printVector(arr);
-
-	// Start from previous element
-	// in the representation till n
-	for (int j = i; j <= n; j++) {
-
-		// Include current element
-		// from representation
-		arr.push_back(j);
-
-		// Call function again
-		// with reduced sum
-		findWays(arr, j, n - j);
-
-		// Backtrack to remove current
-		// element from representation
-		arr.pop_back();
-	}
-}
-
+// Driver Program
 int main()
 {
-	// Given sum N
-	int n = 4;
-
-	// To store the representation
-	// of breaking N
-	vector<int> arr;
-
-	// Function Call
-	findWays(arr, 1, n);
-
+	int n = 4, m = 1;
+	numberofways(n, m);
 	return 0;
 }

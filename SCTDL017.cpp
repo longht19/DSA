@@ -38,6 +38,7 @@ int main()
             vt_starting.push_back(tmp);
         }
         solve(vt_starting, n-1);
+        cout << endl;
     }
 }
 
@@ -63,7 +64,7 @@ void solve(vector<int> vt_starting, int n)
 void printRes(vector<vector<int> > triangle)
 {
     //print result
-    for(int i=0; i < triangle.size(); i++)
+    for(int i=triangle.size() - 1; i >= 0; i--)
     {
         cout << '[';
         for(int j = 0; j < triangle[i].size(); j++)
@@ -74,6 +75,6 @@ void printRes(vector<vector<int> > triangle)
                 cout << " ";
             }
         }
-        cout << ']' << endl;       
+        cout << ']' << " ";       
     }
 }
