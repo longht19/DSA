@@ -70,7 +70,6 @@ int find(int num)
 	return (dp1[cnt - 1] + dp2[cnt - 1]);
 }
 
-// Driver Code
 int main()
 {
 	// Function call to generate the

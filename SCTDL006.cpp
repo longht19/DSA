@@ -52,7 +52,6 @@ void numberofways(int n, int m)
 	}
 }
 
-// Driver Program
 int main()
 {
 	int n = 4, m = 1;

@@ -4,8 +4,6 @@ using namespace std;
 	int t, n;
 
 	int arr[30];
-
-// Function to print the output
 void printTheArray(int arr[], int n)
 {
 	for (int i = 0; i < n; i++) {
@@ -14,7 +12,6 @@ void printTheArray(int arr[], int n)
 	cout << endl;
 }
 
-// Function to generate all binary strings
 void generateAllBinaryStrings(int n, int arr[], int i)
 {
 	if (i == n) {
@@ -35,14 +32,12 @@ void generateAllBinaryStrings(int n, int arr[], int i)
 	generateAllBinaryStrings(n, arr, i + 1);
 }
 
-// Driver Code
 int main()
 {
 	cin >> t;
     while(t--)
     {
         cin >> n;
-        // Print all binary strings
         generateAllBinaryStrings(n, arr, 0);
         
         for(int i=0; i < n; i++)

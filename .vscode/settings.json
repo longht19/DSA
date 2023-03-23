@@ -21,6 +21,9 @@
         "istream": "cpp",
         "ostream": "cpp",
         "streambuf": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "algorithm": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
     }
 }

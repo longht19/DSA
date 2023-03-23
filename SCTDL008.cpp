@@ -8,43 +8,43 @@
  * @copyright Copyright (c) 2023
  * 
  */
-
 #include <iostream>
-
 using namespace std;
 
-string bin2gray(string str)
-{
-    if(str.size() == 1)
-        return str;
-        
-    string ans;
-    ans.push_back(str.front());
-    int msb = static_cast<int>(str.front()) - 48;
-    int bi;
-    char bc;
-    
-    for(int i=1; i < str.size(); i++)
-    {
-        bi = static_cast<int>(str.at(i)) - 48;
-        bi = msb ^ bi;
-        bc = static_cast<char>(bi + 48);
-        ans.push_back(bc);
-        msb = static_cast<int>(str.at(i)) - 48;
-    }
+// Helper function to xor two characters
+char xor_c(char a, char b) { return (a == b) ? '0' : '1'; }
 
-    return ans;
+// Helper function to flip the bit
+char flip(char c) { return (c == '0') ? '1' : '0'; }
+
+// function to convert binary string
+// to gray string
+string binarytoGray(string binary)
+{
+	string gray = "";
+
+	// MSB of gray code is same as binary code
+	gray += binary[0];
+
+	// Compute remaining bits, next bit is computed by
+	// doing XOR of previous and current in Binary
+	for (int i = 1; i < binary.length(); i++) {
+		// Concatenate XOR of previous bit
+		// with current bit
+		gray += xor_c(binary[i - 1], binary[i]);
+	}
+
+	return gray;
 }
 
 int main()
 {
     int t;
-    string str;
     cin >> t;
-    while(t--)
-    {
-        cin >> str;
-        cout << bin2gray(str) << endl;
+    while(t--) {
+        string binary;
+        cin >> binary;
+        cout << binarytoGray(binary) << endl;
     }
-    return 0;
+	return 0;
 }

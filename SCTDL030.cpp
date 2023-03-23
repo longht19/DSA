@@ -15,7 +15,6 @@
 #include<vector>
 #include<algorithm>
 
-
 void solve(int k, std::string s)
 {
     std::vector<char> element;

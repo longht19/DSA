@@ -33,7 +33,7 @@ int main()
             {
                 cout << arr[i] << " ";
             }
-        } else 
+        } else
         {
             for(int i=0; i < n; i++)
             {

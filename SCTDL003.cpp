@@ -8,39 +8,28 @@
  * @copyright Copyright (c) 2023
  * 
  */
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-// function to find the required
-// binary representation
-string nextGreater(string num)
+void nextBinStr(string &num)
 {
 	int l = num.size();
 
-	// examine bits from the right
+	// loop from the right to the left
 	for (int i=l-1; i>=0; i--)
 	{
 		// if '0' is encountered, convert
 		// it to '1' and then break
-		if (num.at(i) == '0')
-		{
-			num.at(i) = '1';
+		if (num[i] == '0') {
+			num[i] = '1';
 			break;
 		}
 		// else convert '1' to '0'
-		else
-			num.at(i) = '0';
-
-
-		// if the binary representation
-		// contains only the set bits
-		// if (i < 0)
-		// 	num = "1" + num;
-			
+		else {
+			num[i] = '0';
+		}			
 	}
-	// final binary representation
-	// of the required integer
-	return num;
+	cout << num << endl;
 }
 
 int main()
@@ -51,8 +40,37 @@ int main()
     while (t--)
     {
         cin >> num;
-        cout << nextGreater(num) << endl;
+        nextBinStr(num);
 		num.clear();
     }
     return 0;
+}
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void TheNextBinStr(string str) {
+	int i = str.length()-1;
+	while(i>=0 && str[i]=='1') i--;
+	if(i<0){
+		for(int j=0;j < str.length();j++) 
+			cout << '0';
+		cout << endl;
+	}
+	else {
+		str[i] = '1';
+		for(int j=i+1;j < str.length();j++) 
+			str[j] = '0';
+		cout << str << endl;
+	}
+}
+int main(){
+	int t;
+	cin >> t;
+	while(t--){
+		string str;
+		cin >> str;
+		TheNextBinStr(str);
+	}
 }
