@@ -37,6 +37,7 @@ int main() {
             ans += (vt[i] * i);
             ans = ans % MODULO;
         }
+        ans = ans % MODULO;
         cout << ans << std::endl;
     }    
 }

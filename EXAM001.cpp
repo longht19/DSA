@@ -28,6 +28,9 @@ int main() {
         removeSpaces(line);
         count += line.length();
     }
+    getline(input, line);
+    removeSpaces(line);
+    count += line.length();
     output << count;
     input.close();
     output.close();
