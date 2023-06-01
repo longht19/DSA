@@ -1,7 +1,7 @@
 /**
  * @file SCTDL070.cpp
  * @author long (you@domain.com)
- * @brief similart to knapsack problem
+ * @brief similar to knapsack problem
  * @version 0.1
  * @date 2023-03-24
  * 

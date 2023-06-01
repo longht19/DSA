@@ -42,17 +42,17 @@ int longestPalSubstr(string str)
 
 int main()
 {
-    // int t;
-    // cin >> t;
-    // while (t--) {
-    //     string str;
-    //     cin >> str;
+    int t;
+    cin >> t;
+    while (t--) {
+        string str;
+        cin >> str;
 
-    //     cout << longestPalSubstr(str) << endl;
-    // }
-	// return 0;
-	string str = "abcbadd";
-	cout << longestPalSubstr(str) << endl;
+        cout << longestPalSubstr(str) << endl;
+    }
+	return 0;
+	// string str = "abcbadd";
+	// cout << longestPalSubstr(str) << endl;
 }
 
 

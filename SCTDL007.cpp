@@ -17,7 +17,6 @@ vector<int> permutation;
 // Function to find the permutations
 void findPermutations(int a[], int n)
 {
-
     do {
         for(int i=0; i < n; i++)
         {

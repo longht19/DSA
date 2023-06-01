@@ -60,10 +60,7 @@ int find(int num)
 		dp1[i] = dp1[i - 1] + dp2[i - 1];
 
 		// Calculate dp2[]
-		dp2[i] = ((v[i] - v[i - 1]) / 2)
-					* dp2[i - 1]
-				+ ((v[i] - v[i - 1] - 1) / 2)
-					* dp1[i - 1];
+		dp2[i] = ((v[i] - v[i - 1]) / 2) * dp2[i - 1] + ((v[i] - v[i - 1] - 1) / 2)	* dp1[i - 1];
 	}
 
 	// Return final ans

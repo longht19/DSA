@@ -34,10 +34,17 @@ int main()
         std::string bin;
         std::cin >> bin;
         int countQM{0};
-        for(int i = 0; i < bin.length(); i++)
+
+        // Count the question marks
+        for(int i = 0; i < bin.length(); i++) 
+        {
             if (bin[i] == '?')
+            {
                 countQM++;
-        
+            }
+        }
+
+        // Generate the bin strings with length equal to number of question marks
         generateBinString(bin, countQM, 0);
     }
 }
@@ -47,11 +54,15 @@ void printBinString(std::string bin, int len)
 {
     int index = 0;
     for (int i = 0; i < bin.size(); i++)
+    {
         if(bin[i] != '?')
+        {
             std::cout << bin[i];
-        else    
+        } else
+        {    
             std::cout << arr[index++];
-    
+        }
+    }
     std::cout << std::endl;
 }
 

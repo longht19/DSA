@@ -24,7 +24,8 @@
     "tuple": "cpp",
     "algorithm": "cpp",
     "cmath": "cpp",
-    "complex": "cpp"
+    "complex": "cpp",
+    "iostream": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
@@ -60,5 +61,6 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "C_Cpp_Runner.useAddressSanitizer": false
+  "C_Cpp_Runner.useAddressSanitizer": false,
+  "C_Cpp_Runner.showCompilationTime": false
 }

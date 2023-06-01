@@ -23,31 +23,16 @@
 
 
 int solve(int n, int s, int m) {
-    // the amount of needed food each day is greater than or 
-    // equal to the amount of maximum food you can buy in a day
-    if(m > n/2) { 
+    if(s*m > (s - s/7) * n) {
         return -1;
     }
 
-    int daysToBuyFood{0};
-    int currentFood{0};
-    for(int i=1; i <= s; i++) {
-        // current food is less than the amount of food needed
-        // to survive
-        if(currentFood < m) {
-            // if today is Sunday -> you starve
-            if(i%7 == 0) {
-                return -1;
-            }
-
-            // else you can go to the grocery store and buy food
-            currentFood += n;
-            daysToBuyFood += 1;
+    for(int i=1; i <= s - s/7; i++) {
+        if (n * i >= s * m)
+        {
+            return i;
         }
-        // food for today
-        currentFood -= m;
     }
-    return daysToBuyFood;
 }
 
 int main() {

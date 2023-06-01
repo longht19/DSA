@@ -17,12 +17,16 @@
 using namespace std;
 
 int X[MAX], toFront[MAX], toBack[MAX], notVisited[MAX];
-int n, dem{0};
+int n, counter{0};
 
 void Init (void ) {
     cin>>n;
-    for (int i=1; i<=n; i++) notVisited[i]=TRUE;
-    for (int i=1; i<=(2*n-1); i++) {
+    for (int i=1; i<=n; i++) 
+    {
+        notVisited[i] = TRUE;
+    }
+    for (int i=1; i<=(2*n-1); i++) 
+    {
         toFront[i] = TRUE; 
         toBack[i]=TRUE;
     }
@@ -34,8 +38,11 @@ void Try(int i){
             notVisited[j]=FALSE;
             toFront[i-j+n]=FALSE;
             toBack[i+j-1]=FALSE;
-            if (i==n ) dem++;
-            else Try(i+1);
+            if (i==n ) { 
+                counter++;
+            } else {
+                Try(i+1);
+            }
             notVisited[j]=TRUE;
             toFront[i-j+n]=TRUE;
             toBack[i+j-1]=TRUE;
@@ -48,8 +55,8 @@ int main(){
     while(t--) {
         Init(); 
         Try(1);
-        cout << dem << endl;
-        dem = 0;
+        cout << counter << endl;
+        counter = 0;
     }
     return 0;
 }

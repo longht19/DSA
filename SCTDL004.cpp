@@ -16,9 +16,9 @@
 using namespace std;
 #define c0   "A"
 #define c1   "B"
-	int t, n;
 
-	int arr[30];
+int t, n;
+int arr[30];
 
 // Function to print the output
 void printTheArray(int arr[], int n)
@@ -53,14 +53,12 @@ void generateAllBinaryStrings(int n, int arr[], int i)
 	generateAllBinaryStrings(n, arr, i + 1);
 }
 
-// Driver Code
 int main()
 {
 	cin >> t;
     while(t--)
     {
         cin >> n;
-        // Print all binary strings
         generateAllBinaryStrings(n, arr, 0);
         
         for(int i=0; i < n; i++)

@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-	int t, n;
+int t, n;
+int arr[30];
 
-	int arr[30];
 void printTheArray(int arr[], int n)
 {
 	for (int i = 0; i < n; i++) {
