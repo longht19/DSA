@@ -41,9 +41,7 @@ string findSum(string str1, string str2)
     {
         // Do school mathematics, compute sum of
         // current digits and carry
-        int sum = ((str1[i]-'0') +
-                   (str2[i+diff]-'0') +
-                   carry);
+        int sum = ((str1[i]-'0') + (str2[i+diff]-'0') + carry);
         str.push_back(sum%10 + '0');
         carry = sum/10;
     }

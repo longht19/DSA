@@ -20,7 +20,8 @@ int X[MAX], toFront[MAX], toBack[MAX], notVisited[MAX];
 int n, counter{0};
 
 void Init (void ) {
-    cin>>n;
+    counter = 0;
+    cin >> n;
     for (int i=1; i<=n; i++) 
     {
         notVisited[i] = TRUE;
@@ -38,7 +39,7 @@ void Try(int i){
             notVisited[j]=FALSE;
             toFront[i-j+n]=FALSE;
             toBack[i+j-1]=FALSE;
-            if (i==n ) { 
+            if (i==n) { 
                 counter++;
             } else {
                 Try(i+1);

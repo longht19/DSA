@@ -1,44 +1,31 @@
 // find the number of k-elements sub-array having sum exactly equal to S
 
 #include <bits/stdc++.h>
-#define MAX 25 
+#define endl "\n"
 using namespace std;
-
-int solve(int arr[], int n, int k, int s)
+int n, ans = 1e9;
+long long s, a[35];
+void Try(int pos, int m, long long d)
 {
-    int res{0};
-    // Calculate all sub-arrays
-    for (int i = 0; i < n-k; i++)
+    if (d == s)
     {
-        int sum = 0;
-        int count = k;
-        for (int j = i; j < i+k; j++)
-        {
-            // Calculate required sum
-            sum += arr[j];
-            count--;
-            if(count == 0) break;
-            // Check if sum is equal to required sum
-        }
-        if(sum == s)
-            res++;
+        ans = min(ans, m);
+        return;
     }
-    return res;
+    for (int i = pos + 1; i <= n; i++)
+        if (d + a[i] <= s && m < ans)
+            Try(i, m + 1, d + a[i]);
 }
 int main()
 {
-    int t;
-    cin >> t;
-    while(t--)
-    {
-        int n, k, s, arr[MAX];
-        cin >> n >> k >> s;
-
-        for(int i=0; i < n; i++)
-        {
-            cin >> arr[i];
-        }
-        
-        cout << solve(arr,n,k,s) << endl;
-    }
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> n >> s;
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
+    Try(0, 0, 0);
+    if (ans == 1e9)
+        cout << -1;
+    else
+        cout << ans;
 }

@@ -1,7 +1,10 @@
 /**
  * @file SCTDL044.cpp
  * @author Long (you@domain.com)
- * @brief 
+ * @brief Rope binding implementation
+ * Given the value of n ropes.
+ * The cost that needs to bind 2 ropes together
+ * is sum of those 2 ropes's value. Find the minimum cost to bind all ropes. 
  * @version 0.1
  * @date 2023-04-13
  * 

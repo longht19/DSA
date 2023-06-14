@@ -8,58 +8,39 @@
  * @copyright Copyright (c) 2023
  * 
  */
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-void swap(int &x, int &y) { 
-    int tmp = x;
-    x = y;
-    y = tmp;
-}
-int main() {
-    int t;
-    std::cin >> t;
-    while(t--) {
-        int n, i, j, times_beg[1001], times_end[1001];
-        std::cin >> n;
-        for(i = 0; i < n; i++) {
-            std::cin >> times_beg[i];
+#include <bits/stdc++.h>
+#define endl "\n"
+using namespace std;
+int main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	int t;
+	cin >> t;
+	while (t--)
+	{
+		int n = 6;
+		cin >> n;
+		// pair<int, int> a[n] = {{2, 1}, {4, 3}, {6, 0}, {7, 5}, {9, 8}, {9, 5}};
+        pair<int, int> a[n];
+		for (int i = 0; i < n; i++)
+        {
+			cin >> a[i].second;
         }
-
-        for(i = 0; i < n; i++) {
-            std::cin >> times_end[i];
+        for (int i = 0; i < n; i++)
+		{
+        	cin >> a[i].first;
         }
-
-        for (i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (times_beg[j] > times_beg[j+1]) {
-                    swap(times_beg[j], times_beg[j+1]);
-                    swap(times_end[j], times_end[j+1]);
-                } else if (times_beg[j] == times_beg[j+1]
-                        && times_end[j] > times_end[j+1]) {
-                    swap(times_beg[j], times_beg[j+1]);
-                    swap(times_end[j], times_end[j+1]);
-                }
-            }
-        }
-
-        // for(i = 0; i < n; i++) {
-        //     std::cout << times_beg[i] << " " << times_end[i] << std::endl;
-        // }
-        int ans{0}, max{0};
-        for (i = 0; i < n-1; i++) {
-            max = 1;
-            int pre_end = times_end[i];
-            for(j = i+1; j < n; j++) {
-                if(times_beg[j] >= pre_end) {
-                    max += 1;
-                    pre_end = times_end[j];
-                }
-            }
-            if(max > ans)   ans = max;
-        }
-
-        std::cout << ans << std::endl;
-    }
+        sort(a, a + n);
+		int ans = 1, k = a[0].first;
+		for (int i = 1; i < n; i++)
+		{
+			if (a[i].second >= k)
+			{
+				ans++;
+				k = a[i].first;
+			}
+		}
+		cout << ans << endl;
+	}
 }

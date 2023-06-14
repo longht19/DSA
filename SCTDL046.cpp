@@ -5,7 +5,7 @@
  * Your area has only one grocery store. Your store is open 
  * every day of the week except Sunday. Given a set of three 
  * numbers N, S, and M satisfying the following constraint:
- *      N : the maximum number of food units you can buy in a day.
+ *      N : the maximum amount of food you can buy in a day.
  *      S : number of days you need to use food to survive.
  *      M : the number of food units needed per day for you to survive. 
  * Suppose you are on the 2nd day of the week and need 
@@ -23,7 +23,8 @@
 
 
 int solve(int n, int s, int m) {
-    if(s*m > (s - s/7) * n) {
+    if(s*m > (s - s/7) * n) 
+    {
         return -1;
     }
 
